@@ -1,0 +1,40 @@
+import { Client } from '../types';
+
+export const CLIENTS: Client[] = [
+  {
+    id: 'client-1',
+    name: 'Veloxa AI',
+    domain: 'veloxa.ai',
+    industry: 'B2B SaaS – Revenue Intelligence',
+    cadence: 'Monthly',
+    connectedSources: ['GSC', 'GA4', 'Semrush', 'GEO/AI'],
+    lastReport: '2026-05-15',
+    manualEffortHours: 4.5,
+    logo: 'V',
+    primaryColor: '#0ea5e9',
+  },
+  {
+    id: 'client-2',
+    name: 'Nordicware Shop',
+    domain: 'nordicwareshop.com',
+    industry: 'E-Commerce – Kitchen & Home',
+    cadence: 'Weekly',
+    connectedSources: ['GSC', 'GA4', 'Semrush', 'Contentful'],
+    lastReport: '2026-06-10',
+    manualEffortHours: 5.0,
+    logo: 'N',
+    primaryColor: '#10b981',
+  },
+  {
+    id: 'client-3',
+    name: 'The Brief Daily',
+    domain: 'thebrieffeed.com',
+    industry: 'Media & Content Publishing',
+    cadence: 'Weekly',
+    connectedSources: ['GSC', 'GA4', 'GEO/AI', 'WordPress'],
+    lastReport: '2026-06-12',
+    manualEffortHours: 3.5,
+    logo: 'T',
+    primaryColor: '#f59e0b',
+  },
+];
