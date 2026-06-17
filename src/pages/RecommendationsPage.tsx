@@ -44,7 +44,7 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Recommendations</h1>
           <p className="text-sm text-gray-500 mt-1">
-            Evidence-backed, prioritized by impact × effort — review and accept before adding to email
+            Evidence-backed, prioritized by impact x effort — review and accept before adding to email
           </p>
         </div>
         <button
@@ -56,7 +56,7 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
         </button>
       </div>
 
-      {/* Stats + Quick wins callout */}
+      {/* Stats */}
       <div className="grid grid-cols-4 gap-3 mb-5">
         <div className="bg-white border border-gray-100 rounded-xl p-3 text-center col-span-1">
           <div className="text-2xl font-black text-gray-900">{recommendations.length}</div>
@@ -126,7 +126,7 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
                 filter === cat ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
-              {cat === 'Quick Wins' ? '⚡ ' + cat : cat}
+              {cat}
             </button>
           ))}
         </div>
@@ -156,7 +156,6 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
             >
               <div className="p-4">
                 <div className="flex items-start gap-3">
-                  {/* Priority number */}
                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5 ${
                     rec.status === 'accepted' ? 'bg-emerald-100 text-emerald-700' :
                     rec.status === 'rejected' ? 'bg-gray-100 text-gray-400' :
@@ -195,7 +194,6 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
 
                     <p className="text-xs text-gray-500 mt-1 leading-relaxed">{rec.whyItMatters}</p>
 
-                    {/* Expected impact highlight */}
                     <div className="flex items-center gap-1.5 mt-2 p-2 bg-gray-50 rounded-lg">
                       <TrendingUp size={11} className="text-gray-400 flex-shrink-0" />
                       <span className="text-xs text-gray-600 font-medium">{rec.expectedImpact}</span>
@@ -215,7 +213,6 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
                   </div>
                 </div>
 
-                {/* Expanded */}
                 {isExpanded && (
                   <div className="mt-4 ml-10 space-y-3 border-t border-gray-100 pt-3">
                     <div className="grid grid-cols-2 gap-3">
@@ -235,7 +232,6 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
                   </div>
                 )}
 
-                {/* Action buttons */}
                 <div className="flex items-center gap-2 mt-3 ml-10 flex-wrap">
                   {rec.status !== 'accepted' && (
                     <button
@@ -273,7 +269,7 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
                     }`}
                   >
                     <Mail size={11} />
-                    {rec.addedToEmail ? 'In email ✓' : 'Add to email'}
+                    {rec.addedToEmail ? 'In email' : 'Add to email'}
                   </button>
                   <button
                     onClick={() => onUpdateRecommendation(rec.id, { status: 'editing' })}
@@ -288,7 +284,6 @@ export const RecommendationsPage: React.FC<RecommendationsPageProps> = ({
         })}
       </div>
 
-      {/* Bottom CTA */}
       {acceptedCount > 0 && (
         <div className="mt-6 bg-blue-50 border border-blue-200 rounded-2xl p-4 flex items-center justify-between">
           <div>

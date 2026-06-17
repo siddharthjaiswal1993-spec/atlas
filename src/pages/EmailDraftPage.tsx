@@ -37,7 +37,7 @@ export const EmailDraftPage: React.FC<EmailDraftPageProps> = ({
       if (tone === 'executive') {
         body = body
           .replace(/\*\*Key Wins This Month\*\*/g, '**Performance Highlights**')
-          .replace(/Here's a quick summary of what we're seeing:/g, 'Please find the key highlights from this month\'s performance review below.');
+          .replace(/Here's a quick summary of what we're seeing:/g, "Please find the key highlights from this month's performance review below.");
       } else if (tone === 'tactical') {
         body = body + '\n\n**Action Items for This Week**\n' +
           recommendations.slice(0, 3).map((r, i) => `${i + 1}. ${r.title} — Owner: ${r.suggestedOwner}`).join('\n');
@@ -65,7 +65,6 @@ export const EmailDraftPage: React.FC<EmailDraftPageProps> = ({
 
   return (
     <div className="p-8 max-w-3xl">
-      {/* Header */}
       <div className="flex items-start justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Client Email Draft</h1>
@@ -125,7 +124,6 @@ export const EmailDraftPage: React.FC<EmailDraftPageProps> = ({
 
       {/* Email Preview */}
       <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
-        {/* Email header */}
         <div className="bg-gray-50 border-b border-gray-100 px-5 py-3">
           <div className="flex items-center gap-2 mb-2">
             <Mail size={14} className="text-gray-400" />
@@ -155,7 +153,6 @@ export const EmailDraftPage: React.FC<EmailDraftPageProps> = ({
           </div>
         </div>
 
-        {/* Email body */}
         <div className="p-5">
           {editing ? (
             <div>
@@ -182,7 +179,6 @@ export const EmailDraftPage: React.FC<EmailDraftPageProps> = ({
         </div>
       </div>
 
-      {/* Approval Section */}
       {!reportApproved && (
         <div className="mt-6 bg-blue-50 border border-blue-100 rounded-2xl p-5">
           <div className="flex items-start gap-3">

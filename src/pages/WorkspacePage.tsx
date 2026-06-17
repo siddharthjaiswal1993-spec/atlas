@@ -86,7 +86,7 @@ export const WorkspacePage: React.FC<WorkspacePageProps> = ({ onSelectClient, se
           })}
         </div>
 
-        {/* Manual vs AI comparison */}
+        {/* Manual vs AI comparison strip */}
         <div className="mt-5 pt-4 border-t border-gray-100 grid grid-cols-2 gap-4">
           <div className="bg-red-50 border border-red-100 rounded-xl p-3 flex items-center gap-3">
             <div className="flex-shrink-0">

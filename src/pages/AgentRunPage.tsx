@@ -23,7 +23,7 @@ const stepMeta: Record<string, { color: string; detail: string }> = {
   cms:           { color: 'bg-slate-100 text-slate-600',    detail: 'Scanned 284 pages — 5 stale, 4 high-impression/low-CTR, 3 missing pages' },
   anomalies:     { color: 'bg-red-100 text-red-700',        detail: '3 high-risk anomalies detected: traffic drop, competitor surge, AI gap' },
   insights:      { color: 'bg-amber-100 text-amber-700',    detail: '6 executive summary bullets generated, 5 risk signals surfaced' },
-  recommendations: { color: 'bg-green-100 text-green-700', detail: '8 recommendations generated, ranked by impact × effort matrix' },
+  recommendations: { color: 'bg-green-100 text-green-700', detail: '8 recommendations generated, ranked by impact x effort matrix' },
   report:        { color: 'bg-blue-100 text-blue-700',      detail: '7-section report drafted: 2,400 words, 96% evidence-backed claims' },
   email:         { color: 'bg-indigo-100 text-indigo-700',  detail: 'Client email drafted with 3 wins, 2 risks, 3 recommended actions' },
 };
@@ -72,6 +72,7 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
 
   return (
     <div className="p-8 max-w-2xl">
+      {/* Header */}
       <div className="mb-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
@@ -102,6 +103,7 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
             </div>
           </div>
 
+          {/* Live timer */}
           {(agentRunning || agentComplete) && (
             <div className="text-right">
               <div className={`text-2xl font-black tabular-nums ${agentComplete ? 'text-emerald-600' : 'text-blue-600'}`}>
@@ -114,6 +116,7 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
           )}
         </div>
 
+        {/* Progress bar */}
         <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
           <div
             className={`h-2.5 rounded-full transition-all duration-500 ${agentComplete ? 'bg-emerald-500' : 'bg-blue-600'}`}
@@ -128,6 +131,7 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
         </div>
       </div>
 
+      {/* Agent context summary */}
       {(agentRunning || agentComplete) && (
         <div className="bg-gray-50 border border-gray-100 rounded-xl px-4 py-3 mb-5">
           <div className="grid grid-cols-3 gap-3 text-xs">
@@ -147,6 +151,7 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
         </div>
       )}
 
+      {/* Steps Timeline */}
       <div className="space-y-1.5 mb-6">
         {steps.map((step, i) => {
           const isActive = step.status === 'running';
@@ -164,6 +169,7 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
                   : 'bg-white border border-gray-50 opacity-60'
               }`}
             >
+              {/* Status indicator */}
               <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${
                 isDone ? 'bg-emerald-100' : isActive ? 'bg-blue-600' : 'bg-gray-100'
               }`}>
@@ -203,6 +209,7 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
         })}
       </div>
 
+      {/* State-based CTAs */}
       {!agentRunning && !agentComplete && (
         <div className="bg-white border border-gray-100 rounded-2xl p-6 text-center shadow-sm">
           <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mx-auto mb-3">
@@ -242,6 +249,7 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
 
       {agentComplete && (
         <div className="space-y-3">
+          {/* Success banner */}
           <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-5">
             <div className="flex items-start gap-3 mb-4">
               <div className="w-9 h-9 rounded-xl bg-emerald-500 flex items-center justify-center flex-shrink-0">
@@ -253,15 +261,15 @@ export const AgentRunPage: React.FC<AgentRunPageProps> = ({
               </div>
             </div>
 
+            {/* Output summary */}
             <div className="grid grid-cols-3 gap-2 mb-4">
               {[
-                { label: 'Report sections', value: '7', icon: '📄' },
-                { label: 'Recommendations', value: '8', icon: '💡' },
-                { label: 'Evidence-backed', value: '96%', icon: '✅' },
+                { label: 'Report sections', value: '7', icon: 'doc' },
+                { label: 'Recommendations', value: '8', icon: 'idea' },
+                { label: 'Evidence-backed', value: '96%', icon: 'check' },
               ].map((item, i) => (
                 <div key={i} className="bg-white rounded-lg p-2.5 text-center border border-emerald-100">
-                  <div className="text-base mb-0.5">{item.icon}</div>
-                  <div className="text-lg font-black text-gray-900">{item.value}</div>
+                  <div className="text-lg font-black text-gray-900 mb-0.5">{item.value}</div>
                   <div className="text-xs text-gray-400">{item.label}</div>
                 </div>
               ))}

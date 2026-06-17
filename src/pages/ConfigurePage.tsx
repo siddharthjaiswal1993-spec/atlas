@@ -256,7 +256,7 @@ export const ConfigurePage: React.FC<ConfigurePageProps> = ({ selectedClientId, 
               {(config.competitors || []).map((comp) => (
                 <div key={comp} className="flex items-center gap-1.5 bg-gray-100 rounded-lg px-2.5 py-1.5 text-sm text-gray-700">
                   <span>{comp}</span>
-                  <button onClick={() => removeCompetitor(comp)} className="text-gray-400 hover:text-red-500 text-lg leading-none">×</button>
+                  <button onClick={() => removeCompetitor(comp)} className="text-gray-400 hover:text-red-500 text-lg leading-none">&times;</button>
                 </div>
               ))}
             </div>
@@ -334,7 +334,7 @@ export const ConfigurePage: React.FC<ConfigurePageProps> = ({ selectedClientId, 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div><span className="text-gray-400">Client:</span> <span className="text-gray-700 font-medium">{client?.name}</span></div>
                 <div><span className="text-gray-400">Type:</span> <span className="text-gray-700 font-medium">{config.reportType}</span></div>
-                <div><span className="text-gray-400">Period:</span> <span className="text-gray-700 font-medium">{config.periodStart} → {config.periodEnd}</span></div>
+                <div><span className="text-gray-400">Period:</span> <span className="text-gray-700 font-medium">{config.periodStart} to {config.periodEnd}</span></div>
                 <div><span className="text-gray-400">Tone:</span> <span className="text-gray-700 font-medium">{config.outputTone}</span></div>
                 <div><span className="text-gray-400">Sources:</span> <span className="text-gray-700 font-medium">{(config.dataSources || []).join(', ')}</span></div>
                 <div><span className="text-gray-400">Competitors:</span> <span className="text-gray-700 font-medium">{(config.competitors || []).join(', ')}</span></div>

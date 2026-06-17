@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Clock, TrendingUp, CheckCircle2, AlertTriangle, Beaker, Target,
-  Users, ArrowRight, Zap, BarChart2,
+  Users, Zap, BarChart2,
 } from 'lucide-react';
 import { EvalMetrics } from '../types';
 import { MiniBar, ScoreRing } from '../components/MetricCard';
@@ -35,15 +35,14 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
 
   const successCriteria = [
     { label: 'Report creation time < 30 min', current: `${metrics.totalAiAssistedMinutes} min`, target: '< 30 min', met: metrics.totalAiAssistedMinutes < 30 },
-    { label: '80%+ sections usable with light edits', current: `${metrics.completenessScore}%`, target: '≥ 80%', met: metrics.completenessScore >= 80 },
-    { label: '90%+ claims backed by data', current: `${metrics.evidenceBackedPercent}%`, target: '≥ 90%', met: metrics.evidenceBackedPercent >= 90 },
-    { label: '4/5+ recommendation usefulness', current: `${metrics.recommendationUsefulnessScore}/5`, target: '≥ 4.0', met: metrics.recommendationUsefulnessScore >= 4.0 },
+    { label: '80%+ sections usable with light edits', current: `${metrics.completenessScore}%`, target: '>= 80%', met: metrics.completenessScore >= 80 },
+    { label: '90%+ claims backed by data', current: `${metrics.evidenceBackedPercent}%`, target: '>= 90%', met: metrics.evidenceBackedPercent >= 90 },
+    { label: '4/5+ recommendation usefulness', current: `${metrics.recommendationUsefulnessScore}/5`, target: '>= 4.0', met: metrics.recommendationUsefulnessScore >= 4.0 },
     { label: 'Zero critical hallucinations', current: `${metrics.unsupportedClaimCount} unsupported`, target: '0 critical', met: metrics.unsupportedClaimCount <= 3 },
   ];
 
   return (
     <div className="p-8 max-w-5xl">
-      {/* Header */}
       <div className="mb-7">
         <div className="flex items-center gap-2 mb-2">
           <Beaker size={15} className="text-blue-600" />
@@ -57,7 +56,6 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
 
       {/* HERO: Before / After */}
       <div className="grid grid-cols-2 gap-4 mb-6">
-        {/* Before */}
         <div className="bg-white border-2 border-red-100 rounded-2xl p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center">
@@ -89,7 +87,6 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
           </div>
         </div>
 
-        {/* After */}
         <div className="bg-white border-2 border-emerald-100 rounded-2xl p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center">
@@ -126,23 +123,23 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
         </div>
       </div>
 
-      {/* Hero Savings Numbers */}
+      {/* Savings Numbers */}
       <div className="grid grid-cols-4 gap-3 mb-6">
         {[
-          { value: `${metrics.timeSavedPercent}%`, label: 'Time saved', sub: 'vs manual baseline', color: 'bg-emerald-500' },
-          { value: `${metrics.manualBaselineMinutes - metrics.totalAiAssistedMinutes}m`, label: 'Minutes saved', sub: 'per report', color: 'bg-blue-500' },
-          { value: `${Math.round(((metrics.manualBaselineMinutes - metrics.totalAiAssistedMinutes) * 4) / 60)}h`, label: 'Hours saved', sub: 'per month (4 reports)', color: 'bg-violet-500' },
-          { value: `${Math.round(((metrics.manualBaselineMinutes - metrics.totalAiAssistedMinutes) * 52) / 60)}h`, label: 'Hours saved', sub: 'per year (52 reports)', color: 'bg-amber-500' },
+          { value: `${metrics.timeSavedPercent}%`, label: 'Time saved', sub: 'vs manual baseline', color: '#10b981' },
+          { value: `${metrics.manualBaselineMinutes - metrics.totalAiAssistedMinutes}m`, label: 'Minutes saved', sub: 'per report', color: '#3b82f6' },
+          { value: `${Math.round(((metrics.manualBaselineMinutes - metrics.totalAiAssistedMinutes) * 4) / 60)}h`, label: 'Hours saved', sub: 'per month (4 reports)', color: '#8b5cf6' },
+          { value: `${Math.round(((metrics.manualBaselineMinutes - metrics.totalAiAssistedMinutes) * 52) / 60)}h`, label: 'Hours saved', sub: 'per year (52 reports)', color: '#f59e0b' },
         ].map((card, i) => (
           <div key={i} className="bg-white border border-gray-100 rounded-2xl p-4 text-center">
-            <div className={`text-3xl font-black mb-1`} style={{ color: ['#10b981', '#3b82f6', '#8b5cf6', '#f59e0b'][i] }}>{card.value}</div>
+            <div className="text-3xl font-black mb-1" style={{ color: card.color }}>{card.value}</div>
             <p className="text-xs font-semibold text-gray-700">{card.label}</p>
             <p className="text-xs text-gray-400">{card.sub}</p>
           </div>
         ))}
       </div>
 
-      {/* Quality Scores Row */}
+      {/* Quality Scores */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <div className="bg-white border border-gray-100 rounded-2xl p-5">
           <h2 className="text-sm font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -182,9 +179,7 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
                     : <AlertTriangle size={13} className="text-red-500 flex-shrink-0" />}
                   <span className="text-xs text-gray-700 leading-tight">{c.label}</span>
                 </div>
-                <div className="flex items-center gap-1.5 flex-shrink-0 ml-2">
-                  <span className={`text-xs font-bold ${c.met ? 'text-emerald-700' : 'text-red-600'}`}>{c.current}</span>
-                </div>
+                <span className={`text-xs font-bold flex-shrink-0 ml-2 ${c.met ? 'text-emerald-700' : 'text-red-600'}`}>{c.current}</span>
               </div>
             ))}
           </div>
@@ -197,7 +192,6 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
           <Beaker size={14} className="text-blue-600" />
           Experiment Design
         </h2>
-
         <div className="grid grid-cols-3 gap-3 mb-5">
           <div className="bg-red-50 border border-red-100 rounded-xl p-3">
             <p className="text-xs font-bold text-red-600 uppercase tracking-wide mb-1">Baseline</p>
@@ -212,7 +206,6 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
             <p className="text-xs text-gray-600">10 recurring reports, 3 CS managers, mixed B2B SaaS + e-commerce + media clients. 30-day experiment window.</p>
           </div>
         </div>
-
         <div className="grid grid-cols-2 gap-4">
           <div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Measurements</p>
@@ -222,7 +215,7 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
                 ['Time to client-ready', `${metrics.totalAiAssistedMinutes} min`, 'vs 240 min manual'],
                 ['CS edit effort', `${metrics.csEditEffortScore}%`, 'of content edited'],
                 ['Evidence-backed claims', `${metrics.evidenceBackedPercent}%`, 'source-cited'],
-                ['Rec. usefulness (1–5)', `${metrics.recommendationUsefulnessScore}`, 'avg rating'],
+                ['Rec. usefulness (1-5)', `${metrics.recommendationUsefulnessScore}`, 'avg rating'],
                 ['Approval readiness', `${metrics.approvalReadinessScore}/100`, 'before edits'],
               ].map(([label, value, sub], i) => (
                 <div key={i} className="flex items-center justify-between text-xs py-1.5 border-b border-gray-50 last:border-0">
@@ -235,7 +228,6 @@ export const EvalDashboardPage: React.FC<EvalDashboardPageProps> = ({ metrics })
               ))}
             </div>
           </div>
-
           <div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Target Outcomes</p>
             <div className="space-y-1.5">
