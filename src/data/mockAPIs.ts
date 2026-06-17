@@ -3,14 +3,8 @@ import { GSCData, GA4Data, SemrushData, GeoVisibilityData, CMSData } from '../ty
 export function mockGSCAPI(clientId: string): GSCData {
   const datasets: Record<string, GSCData> = {
     'client-1': {
-      clicks: 28450,
-      impressions: 412800,
-      ctr: 6.89,
-      avgPosition: 8.4,
-      clicksDelta: 12.3,
-      impressionsDelta: 8.7,
-      ctrDelta: 0.3,
-      positionDelta: -1.2,
+      clicks: 28450, impressions: 412800, ctr: 6.89, avgPosition: 8.4,
+      clicksDelta: 12.3, impressionsDelta: 8.7, ctrDelta: 0.3, positionDelta: -1.2,
       topQueries: [
         { query: 'revenue intelligence platform', clicks: 3240, impressions: 18500, ctr: 17.5, position: 2.1, delta: 18 },
         { query: 'ai sales forecasting', clicks: 2180, impressions: 32100, ctr: 6.8, position: 5.4, delta: -8 },
@@ -40,14 +34,8 @@ export function mockGSCAPI(clientId: string): GSCData {
       ],
     },
     'client-2': {
-      clicks: 64200,
-      impressions: 892400,
-      ctr: 7.19,
-      avgPosition: 6.8,
-      clicksDelta: -4.2,
-      impressionsDelta: 2.1,
-      ctrDelta: -0.5,
-      positionDelta: 0.8,
+      clicks: 64200, impressions: 892400, ctr: 7.19, avgPosition: 6.8,
+      clicksDelta: -4.2, impressionsDelta: 2.1, ctrDelta: -0.5, positionDelta: 0.8,
       topQueries: [
         { query: 'nordic ware cookware', clicks: 8240, impressions: 42100, ctr: 19.6, position: 1.4, delta: -2 },
         { query: 'cast aluminum baking pans', clicks: 5180, impressions: 64200, ctr: 8.1, position: 4.2, delta: -18 },
@@ -72,14 +60,8 @@ export function mockGSCAPI(clientId: string): GSCData {
       ],
     },
     'client-3': {
-      clicks: 142800,
-      impressions: 2840000,
-      ctr: 5.03,
-      avgPosition: 11.2,
-      clicksDelta: -8.4,
-      impressionsDelta: -3.1,
-      ctrDelta: -0.3,
-      positionDelta: 2.1,
+      clicks: 142800, impressions: 2840000, ctr: 5.03, avgPosition: 11.2,
+      clicksDelta: -8.4, impressionsDelta: -3.1, ctrDelta: -0.3, positionDelta: 2.1,
       topQueries: [
         { query: 'daily news briefing', clicks: 18400, impressions: 184000, ctr: 10.0, position: 3.2, delta: -6 },
         { query: 'tech news today', clicks: 14200, impressions: 412000, ctr: 3.4, position: 9.4, delta: -22 },
@@ -94,9 +76,7 @@ export function mockGSCAPI(clientId: string): GSCData {
         { url: '/daily-brief/markets', clicks: 12400, impressions: 218000, ctr: 5.7, position: 7.2, delta: -16 },
         { url: '/', clicks: 10200, impressions: 124000, ctr: 8.2, position: 4.1, delta: -8 },
       ],
-      winners: [
-        { query: 'the brief daily podcast', change: '+4 clicks', metric: 'Clicks' },
-      ],
+      winners: [{ query: 'the brief daily podcast', change: '+4 clicks', metric: 'Clicks' }],
       losers: [
         { query: 'ai news this week', change: '-38 clicks', metric: 'Clicks' },
         { query: 'tech news today', change: '-22 clicks', metric: 'Clicks' },
@@ -110,14 +90,8 @@ export function mockGSCAPI(clientId: string): GSCData {
 export function mockGA4API(clientId: string): GA4Data {
   const datasets: Record<string, GA4Data> = {
     'client-1': {
-      organicSessions: 31200,
-      organicSessionsDelta: 9.4,
-      engagementRate: 64.2,
-      engagementRateDelta: 2.8,
-      conversions: 842,
-      conversionsDelta: 18.3,
-      avgSessionDuration: 248,
-      bounceRate: 35.8,
+      organicSessions: 31200, organicSessionsDelta: 9.4, engagementRate: 64.2, engagementRateDelta: 2.8,
+      conversions: 842, conversionsDelta: 18.3, avgSessionDuration: 248, bounceRate: 35.8,
       topLandingPages: [
         { url: '/product/revenue-intelligence', sessions: 6840, engagementRate: 72.4, conversions: 218 },
         { url: '/blog/ai-sales-forecasting-guide', sessions: 4120, engagementRate: 58.2, conversions: 84 },
@@ -127,14 +101,8 @@ export function mockGA4API(clientId: string): GA4Data {
       ],
     },
     'client-2': {
-      organicSessions: 72400,
-      organicSessionsDelta: -3.8,
-      engagementRate: 58.4,
-      engagementRateDelta: -1.2,
-      conversions: 3240,
-      conversionsDelta: -6.2,
-      avgSessionDuration: 184,
-      bounceRate: 41.6,
+      organicSessions: 72400, organicSessionsDelta: -3.8, engagementRate: 58.4, engagementRateDelta: -1.2,
+      conversions: 3240, conversionsDelta: -6.2, avgSessionDuration: 184, bounceRate: 41.6,
       topLandingPages: [
         { url: '/collections/bundt-pans', sessions: 14200, engagementRate: 62.4, conversions: 842 },
         { url: '/products/anniversary-bundt', sessions: 9840, engagementRate: 74.8, conversions: 621 },
@@ -144,14 +112,8 @@ export function mockGA4API(clientId: string): GA4Data {
       ],
     },
     'client-3': {
-      organicSessions: 158400,
-      organicSessionsDelta: -7.2,
-      engagementRate: 42.8,
-      engagementRateDelta: -3.4,
-      conversions: 4820,
-      conversionsDelta: -11.4,
-      avgSessionDuration: 124,
-      bounceRate: 57.2,
+      organicSessions: 158400, organicSessionsDelta: -7.2, engagementRate: 42.8, engagementRateDelta: -3.4,
+      conversions: 4820, conversionsDelta: -11.4, avgSessionDuration: 124, bounceRate: 57.2,
       topLandingPages: [
         { url: '/newsletter', sessions: 32400, engagementRate: 68.2, conversions: 2140 },
         { url: '/daily-brief/ai-roundup', sessions: 24200, engagementRate: 38.4, conversions: 842 },
@@ -167,10 +129,7 @@ export function mockGA4API(clientId: string): GA4Data {
 export function mockSemrushAPI(clientId: string): SemrushData {
   const datasets: Record<string, SemrushData> = {
     'client-1': {
-      domainAuthority: 52,
-      organicKeywords: 8420,
-      keywordsDelta: 4.2,
-      estimatedTraffic: 28100,
+      domainAuthority: 52, organicKeywords: 8420, keywordsDelta: 4.2, estimatedTraffic: 28100,
       competitors: [
         { name: 'Clari', domain: 'clari.com', organicKeywords: 14200, trafficShare: 28.4, commonKeywords: 1840, rankGains: 142, rankLosses: 38 },
         { name: 'Gong', domain: 'gong.io', organicKeywords: 18400, trafficShare: 24.2, commonKeywords: 2140, rankGains: 98, rankLosses: 54 },
@@ -191,10 +150,7 @@ export function mockSemrushAPI(clientId: string): SemrushData {
       ],
     },
     'client-2': {
-      domainAuthority: 61,
-      organicKeywords: 18400,
-      keywordsDelta: -2.1,
-      estimatedTraffic: 64800,
+      domainAuthority: 61, organicKeywords: 18400, keywordsDelta: -2.1, estimatedTraffic: 64800,
       competitors: [
         { name: 'Lodge Cast Iron', domain: 'lodgemfg.com', organicKeywords: 24200, trafficShare: 32.4, commonKeywords: 4840, rankGains: 214, rankLosses: 48 },
         { name: 'All-Clad', domain: 'all-clad.com', organicKeywords: 16800, trafficShare: 22.8, commonKeywords: 3240, rankGains: 128, rankLosses: 62 },
@@ -213,10 +169,7 @@ export function mockSemrushAPI(clientId: string): SemrushData {
       ],
     },
     'client-3': {
-      domainAuthority: 68,
-      organicKeywords: 42400,
-      keywordsDelta: -6.8,
-      estimatedTraffic: 142000,
+      domainAuthority: 68, organicKeywords: 42400, keywordsDelta: -6.8, estimatedTraffic: 142000,
       competitors: [
         { name: 'Morning Brew', domain: 'morningbrew.com', organicKeywords: 84200, trafficShare: 38.4, commonKeywords: 12400, rankGains: 842, rankLosses: 124 },
         { name: 'The Hustle', domain: 'thehustle.co', organicKeywords: 42800, trafficShare: 22.4, commonKeywords: 8400, rankGains: 424, rankLosses: 96 },
@@ -242,12 +195,8 @@ export function mockSemrushAPI(clientId: string): SemrushData {
 export function mockGeoVisibilityAPI(clientId: string): GeoVisibilityData {
   const datasets: Record<string, GeoVisibilityData> = {
     'client-1': {
-      aiVisibilityScore: 42,
-      aiVisibilityScoreDelta: -8,
-      shareOfVoice: 18.4,
-      mentionRate: 34.2,
-      citationRate: 12.8,
-      sentimentScore: 72,
+      aiVisibilityScore: 42, aiVisibilityScoreDelta: -8, shareOfVoice: 18.4,
+      mentionRate: 34.2, citationRate: 12.8, sentimentScore: 72,
       engines: [
         { name: 'ChatGPT', visibilityScore: 48, mentionCount: 284, citationCount: 84, sentiment: 'positive' },
         { name: 'Perplexity', visibilityScore: 52, mentionCount: 198, citationCount: 124, sentiment: 'positive' },
@@ -268,12 +217,8 @@ export function mockGeoVisibilityAPI(clientId: string): GeoVisibilityData {
       ],
     },
     'client-2': {
-      aiVisibilityScore: 28,
-      aiVisibilityScoreDelta: 4,
-      shareOfVoice: 12.4,
-      mentionRate: 22.8,
-      citationRate: 8.4,
-      sentimentScore: 64,
+      aiVisibilityScore: 28, aiVisibilityScoreDelta: 4, shareOfVoice: 12.4,
+      mentionRate: 22.8, citationRate: 8.4, sentimentScore: 64,
       engines: [
         { name: 'ChatGPT', visibilityScore: 32, mentionCount: 142, citationCount: 42, sentiment: 'positive' },
         { name: 'Perplexity', visibilityScore: 38, mentionCount: 98, citationCount: 64, sentiment: 'positive' },
@@ -293,12 +238,8 @@ export function mockGeoVisibilityAPI(clientId: string): GeoVisibilityData {
       ],
     },
     'client-3': {
-      aiVisibilityScore: 58,
-      aiVisibilityScoreDelta: -14,
-      shareOfVoice: 8.4,
-      mentionRate: 18.2,
-      citationRate: 6.8,
-      sentimentScore: 68,
+      aiVisibilityScore: 58, aiVisibilityScoreDelta: -14, shareOfVoice: 8.4,
+      mentionRate: 18.2, citationRate: 6.8, sentimentScore: 68,
       engines: [
         { name: 'ChatGPT', visibilityScore: 62, mentionCount: 384, citationCount: 124, sentiment: 'positive' },
         { name: 'Perplexity', visibilityScore: 68, mentionCount: 284, citationCount: 184, sentiment: 'positive' },
@@ -340,9 +281,9 @@ export function mockCMSAPI(clientId: string): CMSData {
         { url: '/blog/crm-analytics-guide', title: 'CRM Analytics Guide', impressions: 28600, ctr: 3.9, avgPosition: 9.2 },
       ],
       losingRankPages: [
-        { url: '/blog/b2b-sales-ai', title: 'B2B Sales AI Guide', positionChange: +6.2, currentPosition: 14.7 },
-        { url: '/blog/crm-revenue-tracking', title: 'CRM Revenue Tracking', positionChange: +4.8, currentPosition: 11.3 },
-        { url: '/blog/sales-pipeline-guide', title: 'Sales Pipeline Management', positionChange: +3.2, currentPosition: 18.4 },
+        { url: '/blog/b2b-sales-ai', title: 'B2B Sales AI Guide', positionChange: 6.2, currentPosition: 14.7 },
+        { url: '/blog/crm-revenue-tracking', title: 'CRM Revenue Tracking', positionChange: 4.8, currentPosition: 11.3 },
+        { url: '/blog/sales-pipeline-guide', title: 'Sales Pipeline Management', positionChange: 3.2, currentPosition: 18.4 },
       ],
       missingComparisonPages: [
         { topic: 'Veloxa AI vs Clari', competitor: 'Clari', estimatedVolume: 3400 },
@@ -363,8 +304,8 @@ export function mockCMSAPI(clientId: string): CMSData {
         { url: '/products/roasting-pan-large', title: 'Large Roasting Pan', impressions: 42400, ctr: 3.1, avgPosition: 12.4 },
       ],
       losingRankPages: [
-        { url: '/collections/cast-aluminum', title: 'Cast Aluminum Collection', positionChange: +3.8, currentPosition: 8.4 },
-        { url: '/products/roasting-pan-large', title: 'Large Roasting Pan', positionChange: +5.2, currentPosition: 12.4 },
+        { url: '/collections/cast-aluminum', title: 'Cast Aluminum Collection', positionChange: 3.8, currentPosition: 8.4 },
+        { url: '/products/roasting-pan-large', title: 'Large Roasting Pan', positionChange: 5.2, currentPosition: 12.4 },
       ],
       missingComparisonPages: [
         { topic: 'Nordic Ware vs Lodge Cast Iron', competitor: 'Lodge Cast Iron', estimatedVolume: 5200 },
@@ -385,9 +326,9 @@ export function mockCMSAPI(clientId: string): CMSData {
         { url: '/category/startups', title: 'Startup News', impressions: 284000, ctr: 2.8, avgPosition: 14.2 },
       ],
       losingRankPages: [
-        { url: '/daily-brief/ai-roundup', title: 'Daily AI Roundup', positionChange: +6.8, currentPosition: 14.2 },
-        { url: '/category/technology', title: 'Technology News', positionChange: +8.4, currentPosition: 18.4 },
-        { url: '/newsletter/signup', title: 'Newsletter Signup', positionChange: +2.4, currentPosition: 7.8 },
+        { url: '/daily-brief/ai-roundup', title: 'Daily AI Roundup', positionChange: 6.8, currentPosition: 14.2 },
+        { url: '/category/technology', title: 'Technology News', positionChange: 8.4, currentPosition: 18.4 },
+        { url: '/newsletter/signup', title: 'Newsletter Signup', positionChange: 2.4, currentPosition: 7.8 },
       ],
       missingComparisonPages: [
         { topic: 'The Brief Daily vs Morning Brew', competitor: 'Morning Brew', estimatedVolume: 2800 },
