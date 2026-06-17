@@ -9,20 +9,8 @@ import { RecommendationsPage } from './pages/RecommendationsPage';
 import { EmailDraftPage } from './pages/EmailDraftPage';
 import { EvalDashboardPage } from './pages/EvalDashboardPage';
 import { PRDSummaryPage } from './pages/PRDSummaryPage';
-import {
-  AppState,
-  Screen,
-  ReportConfig,
-  Recommendation,
-  EmailDraft,
-} from './types';
-import {
-  AGENT_STEPS,
-  generateReport,
-  generateEmailDraft,
-  generateRecommendations,
-  calculateEvalMetrics,
-} from './data/reportAgentService';
+import { AppState, Screen, ReportConfig, Recommendation, EmailDraft } from './types';
+import { AGENT_STEPS, generateReport, generateEmailDraft, generateRecommendations, calculateEvalMetrics } from './data/reportAgentService';
 
 const initialState: AppState = {
   currentScreen: 'workspace',
@@ -78,20 +66,16 @@ function App() {
     }));
   }, []);
 
-  // Agent step simulation
   useEffect(() => {
     if (!state.agentRunning || state.agentComplete) return;
-
     const steps = state.agentSteps;
     const currentIdx = steps.findIndex(s => s.status === 'waiting');
-
     if (currentIdx === -1) {
       const clientId = state.selectedClientId!;
       const report = generateReport(clientId);
       const recs = generateRecommendations(clientId);
       const email = generateEmailDraft(clientId, recs);
       const evalMetrics = calculateEvalMetrics();
-
       setState(prev => ({
         ...prev,
         agentRunning: false,
@@ -104,33 +88,24 @@ function App() {
       }));
       return;
     }
-
     setState(prev => ({
       ...prev,
-      agentSteps: prev.agentSteps.map((s, i) =>
-        i === currentIdx ? { ...s, status: 'running' } : s
-      ),
+      agentSteps: prev.agentSteps.map((s, i) => i === currentIdx ? { ...s, status: 'running' } : s),
     }));
-
     const duration = steps[currentIdx].duration || 1000;
     const timer = setTimeout(() => {
       setState(prev => ({
         ...prev,
-        agentSteps: prev.agentSteps.map((s, i) =>
-          i === currentIdx ? { ...s, status: 'completed' } : s
-        ),
+        agentSteps: prev.agentSteps.map((s, i) => i === currentIdx ? { ...s, status: 'completed' } : s),
       }));
     }, duration);
-
     return () => clearTimeout(timer);
   }, [state.agentRunning, state.agentSteps, state.agentComplete, state.selectedClientId]);
 
   const handleUpdateRecommendation = useCallback((id: string, updates: Partial<Recommendation>) => {
     setState(prev => ({
       ...prev,
-      recommendations: prev.recommendations.map(r =>
-        r.id === id ? { ...r, ...updates } : r
-      ),
+      recommendations: prev.recommendations.map(r => r.id === id ? { ...r, ...updates } : r),
     }));
   }, []);
 
@@ -168,7 +143,6 @@ function App() {
         onReset={handleReset}
         reportApproved={state.reportApproved}
       />
-
       <div className="flex-1 flex flex-col min-w-0">
         <TopBar
           currentScreen={state.currentScreen}
@@ -176,23 +150,13 @@ function App() {
           agentComplete={state.agentComplete}
           reportApproved={state.reportApproved}
         />
-
         <main className="flex-1 overflow-y-auto">
           {state.currentScreen === 'workspace' && (
-            <WorkspacePage
-              onSelectClient={handleSelectClient}
-              selectedClientId={state.selectedClientId}
-            />
+            <WorkspacePage onSelectClient={handleSelectClient} selectedClientId={state.selectedClientId} />
           )}
-
           {state.currentScreen === 'configure' && state.selectedClientId && (
-            <ConfigurePage
-              selectedClientId={state.selectedClientId}
-              onRunAgent={handleRunAgent}
-              initialConfig={state.reportConfig}
-            />
+            <ConfigurePage selectedClientId={state.selectedClientId} onRunAgent={handleRunAgent} initialConfig={state.reportConfig} />
           )}
-
           {state.currentScreen === 'agent-run' && (
             <AgentRunPage
               steps={state.agentSteps}
@@ -204,7 +168,6 @@ function App() {
               selectedClientId={state.selectedClientId}
             />
           )}
-
           {state.currentScreen === 'report' && state.generatedReport && state.selectedClientId && (
             <ReportPage
               report={state.generatedReport}
@@ -214,7 +177,6 @@ function App() {
               exportSimulated={state.exportSimulated}
             />
           )}
-
           {state.currentScreen === 'recommendations' && (
             <RecommendationsPage
               recommendations={state.recommendations}
@@ -222,7 +184,6 @@ function App() {
               onGoToEmail={() => navigate('email-draft')}
             />
           )}
-
           {state.currentScreen === 'email-draft' && state.emailDraft && state.selectedClientId && (
             <EmailDraftPage
               emailDraft={state.emailDraft}
@@ -233,29 +194,20 @@ function App() {
               reportApproved={state.reportApproved}
             />
           )}
-
           {state.currentScreen === 'eval' && state.evalMetrics && (
             <EvalDashboardPage metrics={state.evalMetrics} />
           )}
-
           {state.currentScreen === 'eval' && !state.evalMetrics && (
             <div className="p-8 max-w-2xl">
               <div className="bg-white rounded-2xl border border-gray-100 p-8 text-center">
-                <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">📊</span>
-                </div>
                 <h2 className="text-lg font-semibold text-gray-900 mb-2">No report data yet</h2>
                 <p className="text-sm text-gray-500">Run the reporting agent first to see eval metrics.</p>
-                <button
-                  onClick={() => navigate('workspace')}
-                  className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
-                >
+                <button onClick={() => navigate('workspace')} className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
                   Start with a client
                 </button>
               </div>
             </div>
           )}
-
           {state.currentScreen === 'prd' && <PRDSummaryPage />}
         </main>
       </div>

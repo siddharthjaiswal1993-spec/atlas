@@ -8,7 +8,6 @@ interface EvidenceTagProps {
 }
 
 export const EvidenceTag: React.FC<EvidenceTagProps> = ({ source, confidence, impact }) => {
-  // Split compound sources like "GSC + GA4" for individual coloring
   const sources = source.split('+').map(s => s.trim()).filter(Boolean);
 
   return (

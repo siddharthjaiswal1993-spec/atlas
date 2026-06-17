@@ -77,25 +77,11 @@ export const ScoreRing: React.FC<ScoreRingProps> = ({ score, max = 100, label, c
     <div className="flex flex-col items-center gap-1">
       <div className="relative" style={{ width: size, height: size }}>
         <svg width={size} height={size} className="-rotate-90">
+          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#f1f5f9" strokeWidth={8} />
           <circle
-            cx={size / 2}
-            cy={size / 2}
-            r={radius}
-            fill="none"
-            stroke="#f1f5f9"
-            strokeWidth={8}
-          />
-          <circle
-            cx={size / 2}
-            cy={size / 2}
-            r={radius}
-            fill="none"
-            stroke={color}
-            strokeWidth={8}
-            strokeDasharray={circ}
-            strokeDashoffset={offset}
-            strokeLinecap="round"
-            className="transition-all duration-700"
+            cx={size / 2} cy={size / 2} r={radius} fill="none" stroke={color}
+            strokeWidth={8} strokeDasharray={circ} strokeDashoffset={offset}
+            strokeLinecap="round" className="transition-all duration-700"
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">

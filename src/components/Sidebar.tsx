@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
 import {
-  LayoutDashboard,
-  Settings2,
-  Bot,
-  FileText,
-  Lightbulb,
-  Mail,
-  BarChart2,
-  BookOpen,
-  ChevronRight,
-  Zap,
-  RotateCcw,
-  CheckCircle2,
-  Clock,
+  LayoutDashboard, Settings2, Bot, FileText, Lightbulb, Mail,
+  BarChart2, BookOpen, ChevronRight, Zap, RotateCcw, CheckCircle2, Clock,
 } from 'lucide-react';
 import { Screen } from '../types';
 
@@ -46,12 +35,7 @@ const workflowSteps: { screen: Screen; time: string }[] = [
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  currentScreen,
-  onNavigate,
-  agentComplete,
-  selectedClientId,
-  onReset,
-  reportApproved,
+  currentScreen, onNavigate, agentComplete, selectedClientId, onReset, reportApproved,
 }) => {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
 
@@ -76,7 +60,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <aside className="w-60 bg-white border-r border-gray-100 flex flex-col min-h-screen">
-      {/* Logo */}
       <div className="px-5 py-5 border-b border-gray-100">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
@@ -89,7 +72,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
       </div>
 
-      {/* Workflow Progress Bar */}
       {selectedClientId && (
         <div className="px-4 py-3 border-b border-gray-50 bg-gray-50/60">
           <div className="flex items-center justify-between mb-1.5">
@@ -113,26 +95,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
       )}
 
-      {/* Navigation */}
       <nav className="flex-1 px-3 py-3 space-y-0.5 overflow-y-auto">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = currentScreen === item.id;
           const accessible = isAccessible(item.id);
           const workflowStep = workflowSteps.find(w => w.screen === item.id);
-          const isDone = agentComplete && workflowScreens.indexOf(item.id) < workflowScreens.length - 1 &&
-            workflowScreens.indexOf(item.id) >= 0;
+          const isDone = agentComplete && workflowScreens.indexOf(item.id) < workflowScreens.length - 1 && workflowScreens.indexOf(item.id) >= 0;
 
           return (
             <button
               key={item.id}
               onClick={() => accessible && onNavigate(item.id)}
               className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-all duration-150 group ${
-                active
-                  ? 'bg-blue-50 text-blue-700 font-medium'
-                  : accessible
-                  ? 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
-                  : 'text-gray-300 cursor-not-allowed'
+                active ? 'bg-blue-50 text-blue-700 font-medium'
+                : accessible ? 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                : 'text-gray-300 cursor-not-allowed'
               }`}
             >
               <div className="flex items-center gap-2.5">
@@ -153,7 +131,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         })}
       </nav>
 
-      {/* Status + Reset */}
       <div className="px-4 py-4 border-t border-gray-100 space-y-2.5">
         <div className="bg-blue-50 rounded-lg px-3 py-2.5">
           <div className="flex items-center gap-1.5 mb-0.5">
@@ -161,14 +138,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <p className="text-xs font-semibold text-blue-700">Avg. time saved</p>
           </div>
           <p className="text-xs text-blue-500">
-            {agentComplete
-              ? '~212 minutes saved on this report'
-              : selectedClientId
-              ? 'Ready to run — est. 28 min total'
+            {agentComplete ? '~212 minutes saved on this report'
+              : selectedClientId ? 'Ready to run — est. 28 min total'
               : 'Select a client to begin'}
           </p>
         </div>
-
         <button
           onClick={handleReset}
           className={`w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150 ${

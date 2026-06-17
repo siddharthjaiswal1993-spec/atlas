@@ -32,10 +32,7 @@ export const TopBar: React.FC<TopBarProps> = ({ currentScreen, selectedClientId,
           <>
             <span className="text-gray-300 text-sm">/</span>
             <div className="flex items-center gap-1.5">
-              <div
-                className="w-5 h-5 rounded text-white text-xs font-bold flex items-center justify-center"
-                style={{ backgroundColor: client.primaryColor }}
-              >
+              <div className="w-5 h-5 rounded text-white text-xs font-bold flex items-center justify-center" style={{ backgroundColor: client.primaryColor }}>
                 {client.logo}
               </div>
               <span className="text-sm text-gray-600">{client.name}</span>
@@ -43,7 +40,6 @@ export const TopBar: React.FC<TopBarProps> = ({ currentScreen, selectedClientId,
           </>
         )}
       </div>
-
       <div className="flex items-center gap-3">
         {!selectedClientId && (
           <div className="flex items-center gap-1.5 text-xs text-gray-400">
