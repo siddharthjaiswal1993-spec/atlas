@@ -49,10 +49,10 @@ const sections: Section[] = [
     content: (
       <div className="space-y-2.5 text-sm text-gray-700">
         {[
-          { job: 'When I start a new reporting cycle,', outcome: 'I want the agent to plan the report and pull relevant data automatically, so I don\'t spend 2+ hours on data collection.' },
+          { job: 'When I start a new reporting cycle,', outcome: "I want the agent to plan the report and pull relevant data automatically, so I don't spend 2+ hours on data collection." },
           { job: 'When I review a generated report,', outcome: 'I want to see every claim backed by a source, so I can trust what the agent wrote before sharing it with clients.' },
           { job: 'When I identify key recommendations,', outcome: 'I want to accept/reject/edit them individually and add them to the email, so I maintain editorial control.' },
-          { job: 'When a client\'s AI visibility drops,', outcome: 'I want the agent to detect it proactively, so I can address it before the client notices.' },
+          { job: "When a client's AI visibility drops,", outcome: 'I want the agent to detect it proactively, so I can address it before the client notices.' },
         ].map((item, i) => (
           <div key={i} className="bg-blue-50 border border-blue-100 rounded-lg p-3">
             <p className="text-blue-600 text-xs font-medium">{item.job}</p>
@@ -162,20 +162,20 @@ const sections: Section[] = [
         <p className="text-xs text-gray-500 mb-3">The agent operates at L2.5 bounded autonomy — it can plan, execute, and draft, but must not send anything externally without human approval.</p>
         <div className="grid grid-cols-2 gap-2">
           {[
-            '✅ Plan the report structure based on type and config',
-            '✅ Select relevant data sources per report type',
-            '✅ Pull and process mock API data',
-            '✅ Detect anomalies and performance changes',
-            '✅ Generate evidence-backed insights',
-            '✅ Create prioritized recommendations',
-            '✅ Draft a structured client report',
-            '✅ Draft a personalized client email',
-            '❌ Send email without CS approval',
-            '❌ Publish content or push to CMS',
-            '❌ Make API calls to production systems',
-            '❌ Share data with external services',
+            'Can: Plan the report structure based on type and config',
+            'Can: Select relevant data sources per report type',
+            'Can: Pull and process mock API data',
+            'Can: Detect anomalies and performance changes',
+            'Can: Generate evidence-backed insights',
+            'Can: Create prioritized recommendations',
+            'Can: Draft a structured client report',
+            'Can: Draft a personalized client email',
+            'Cannot: Send email without CS approval',
+            'Cannot: Publish content or push to CMS',
+            'Cannot: Make API calls to production systems',
+            'Cannot: Share data with external services',
           ].map((item, i) => (
-            <div key={i} className={`text-xs p-2 rounded-lg ${item.startsWith('✅') ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-600'}`}>
+            <div key={i} className={`text-xs p-2 rounded-lg ${item.startsWith('Can:') ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-600'}`}>
               {item}
             </div>
           ))}
@@ -256,33 +256,33 @@ const sections: Section[] = [
         <div>
           <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Phase 2 — Real API Integration</h3>
           <ul className="space-y-1 text-xs text-gray-600 ml-3">
-            <li>• Connect live GSC, GA4, and Semrush APIs</li>
-            <li>• OAuth-based data source authentication</li>
-            <li>• Scheduled automated report generation</li>
+            <li>Connect live GSC, GA4, and Semrush APIs</li>
+            <li>OAuth-based data source authentication</li>
+            <li>Scheduled automated report generation</li>
           </ul>
         </div>
         <div>
           <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Phase 3 — Multi-CS Collaboration</h3>
           <ul className="space-y-1 text-xs text-gray-600 ml-3">
-            <li>• Multi-user workspace with role-based access</li>
-            <li>• Comment and annotation layer on reports</li>
-            <li>• Report version history and diff view</li>
+            <li>Multi-user workspace with role-based access</li>
+            <li>Comment and annotation layer on reports</li>
+            <li>Report version history and diff view</li>
           </ul>
         </div>
         <div>
           <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Phase 4 — Client Self-Serve Portal</h3>
           <ul className="space-y-1 text-xs text-gray-600 ml-3">
-            <li>• White-label client report sharing link</li>
-            <li>• Client-side interactive report view</li>
-            <li>• Client feedback and approval workflow</li>
+            <li>White-label client report sharing link</li>
+            <li>Client-side interactive report view</li>
+            <li>Client feedback and approval workflow</li>
           </ul>
         </div>
         <div>
           <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Phase 5 — Autonomous Monitoring</h3>
           <ul className="space-y-1 text-xs text-gray-600 ml-3">
-            <li>• Real-time anomaly detection and alerting</li>
-            <li>• Proactive CS notification for ranking drops</li>
-            <li>• Weekly AI digest emails to clients</li>
+            <li>Real-time anomaly detection and alerting</li>
+            <li>Proactive CS notification for ranking drops</li>
+            <li>Weekly AI digest emails to clients</li>
           </ul>
         </div>
       </div>
@@ -302,7 +302,6 @@ export const PRDSummaryPage: React.FC = () => {
 
   return (
     <div className="p-8 max-w-3xl">
-      {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-2 mb-3">
           <div className="w-6 h-6 rounded-md bg-blue-100 flex items-center justify-center">
@@ -320,7 +319,6 @@ export const PRDSummaryPage: React.FC = () => {
         </p>
       </div>
 
-      {/* Sections */}
       <div className="space-y-2">
         {sections.map((section) => {
           const isOpen = openSections.has(section.id);
@@ -346,7 +344,6 @@ export const PRDSummaryPage: React.FC = () => {
         })}
       </div>
 
-      {/* Footer */}
       <div className="mt-8 bg-blue-50 border border-blue-100 rounded-2xl p-5 flex items-start gap-3">
         <Zap size={16} className="text-blue-600 flex-shrink-0 mt-0.5" />
         <div>
